@@ -17,7 +17,7 @@ export default function Note({ note }) {
 				components={{
 					a: ({ href, children }) => (
 						<Link href={`/garden/notes/${href}`}>
-							<span>{children}</span>
+							<span className="cursor-pointer text-yellow-700">{children}</span>
 						</Link>
 					),
 				}}
