@@ -1,10 +1,12 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
+import GardenFence from "../../../components/GardenFence";
 import {
 	getAllNotes,
 	getAllTagsFromNotes,
 	getNotesByTag,
 } from "../../../lib/api";
+import GardenHeader from "../../../components/GardenHeader";
 
 const Tag = ({ notes, tag }) => {
 	const router = useRouter();
@@ -12,8 +14,8 @@ const Tag = ({ notes, tag }) => {
 		return <div>Upps</div>;
 	}
 	return (
-		<>
-			<div>Enter {tag}</div>
+		<GardenFence>
+			<GardenHeader>All notes tagged with: {tag}</GardenHeader>
 			<ul>
 				{notes.map(note => (
 					<Link key={note.slug} href={`/garden/notes/${note.slug}`}>
@@ -21,7 +23,7 @@ const Tag = ({ notes, tag }) => {
 					</Link>
 				))}
 			</ul>
-		</>
+		</GardenFence>
 	);
 };
 

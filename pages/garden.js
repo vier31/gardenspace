@@ -1,15 +1,17 @@
 import Link from "next/link";
+import GardenFence from "../components/GardenFence";
+import GardenHeader from "../components/GardenHeader";
 import { getAllNotes, getAllTagsFromNotes } from "../lib/api";
 
 const Garden = ({ allNotes = [], allTags = [] }) => {
 	return (
-		<>
-			<h3 className="text-2xl font-medium mb-4">Welcome to the garden</h3>
+		<GardenFence>
+			<GardenHeader>Welcome to the garden</GardenHeader>
 			<ul>
-				<h4 className="text-lg mb-2">Enter via tags:</h4>
+				<h4 className="text-lg mb-4">Enter via tags:</h4>
 				{allTags.map(tag => (
 					<Link key={tag} href={`garden/tags/${tag}`}>
-						<li className="cursor-pointer max-w-min text-lg m-2 p-2 rounded-md border border-solid border-gray-500">
+						<li className="cursor-pointer inline max-w-min text-lg mr-2 p-2 rounded-md border border-solid border-gray-500">
 							{tag}
 						</li>
 					</Link>
@@ -23,7 +25,7 @@ const Garden = ({ allNotes = [], allTags = [] }) => {
 					</Link>
 				))}
 			</ul>
-		</>
+		</GardenFence>
 	);
 };
 

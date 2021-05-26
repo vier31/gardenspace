@@ -1,7 +1,11 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Image from "next/image";
+import GardenFence from "../../../components/GardenFence";
 import { getAllNotes, getNoteBySlug } from "../../../lib/api";
 import ReactMarkdown from "react-markdown";
+import { startsWith } from "lodash";
+import GardenHeader from "../../../components/GardenHeader";
 
 export default function Note({ note }) {
 	const router = useRouter();
@@ -10,19 +14,41 @@ export default function Note({ note }) {
 	}
 
 	return (
-		<>
-			<h2>{note.title}</h2>
+		<GardenFence>
+			<GardenHeader>{note.title}</GardenHeader>
+			{note.coverImage ? (
+				<Image
+					src={note.coverImage}
+					alt={note.imgAlt}
+					height={500}
+					width={500}
+				/>
+			) : null}
 			<ReactMarkdown
 				children={note.content}
 				components={{
-					a: ({ href, children }) => (
-						<Link href={`/garden/notes/${href}`}>
-							<span className="cursor-pointer text-yellow-700">{children}</span>
-						</Link>
-					),
+					a: ({ href, children }) => {
+						if (startsWith(href, "http")) {
+							return (
+								<Link href={href}>
+									<span className="cursor-pointer text-yellow-700">
+										{children}
+									</span>
+								</Link>
+							);
+						} else {
+							return (
+								<Link href={`/garden/notes/${href}`}>
+									<span className="cursor-pointer text-yellow-700">
+										{children}
+									</span>
+								</Link>
+							);
+						}
+					},
 				}}
 			/>
-		</>
+		</GardenFence>
 	);
 }
 
@@ -35,6 +61,7 @@ export async function getStaticProps({ params }) {
 		"author",
 		"content",
 		"coverImage",
+		"imgAlt",
 	]);
 
 	return {

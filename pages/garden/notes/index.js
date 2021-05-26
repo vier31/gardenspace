@@ -1,5 +1,7 @@
+import GardenFence from "../../../components/GardenFence";
+
 const Notes = () => {
-	return <div>Enter Notes</div>;
+	return <GardenFence>Enter Notes</GardenFence>;
 };
 
 export default Notes;

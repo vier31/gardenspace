@@ -17,7 +17,7 @@ function Page({ children }) {
 			{/* <div className="m-8">
 				<p>Search</p>
 			</div> */}
-			<div className="max-w-sm mx-auto mt-8">{children}</div>
+			{children}
 		</>
 	);
 }
