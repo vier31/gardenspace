@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getAllNotes, getAllTagsFromNotes } from "../lib/api";
 
-const garden = ({ allNotes = [], allTags = [] }) => {
+const Garden = ({ allNotes = [], allTags = [] }) => {
 	return (
 		<>
 			<p>Enter the garden</p>
@@ -32,4 +32,4 @@ export async function getStaticProps() {
 	};
 }
 
-export default garden;
+export default Garden;
