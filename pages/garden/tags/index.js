@@ -1,11 +1,11 @@
-import TagList from "../../../components/lists/TagList";
+// import TagList from "../../../components/lists/TagList";
 import { getAllNotes, getAllTagsFromNotes } from "../../../lib/api";
 
 const Tags = ({ allTags }) => {
 	return (
 		<>
 			<div>Enter Notes</div>
-			<TagList tags={allTags} />
+			{/* <TagList tags={allTags} /> */}
 		</>
 	);
 };
