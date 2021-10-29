@@ -14,12 +14,11 @@ function Page({ children }) {
           <Link href="/p5">
             <span className="mr-8 cursor-pointer">P5</span>
           </Link>
+          <Link href="/images">
+						<span className="mr-8 cursor-pointer">Images</span>
+					</Link>
         </div>
       </div>
-      {/* todo: make site searchable */}
-      {/* <div className="m-8">
-				<p>Search</p>
-			</div> */}
       {children}
     </>
   );
